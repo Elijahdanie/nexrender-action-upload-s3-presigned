@@ -1,5 +1,5 @@
 const fs = require("fs");
-const axios = require("axios");
+const axios = require('axios')
 const FormData = require('form-data')
 
 const putToPresignedUrl = async (url, buffer, contentTypeArg, logger) => {
@@ -62,10 +62,10 @@ const PostToPresignedUrlWithFormData = async (
     }
   } catch (error) {
     logger.log(
-      `[nexrender-action-upload-s3-presigned] could not upload to s3 presigned url: ${url}, error: ${resp.status}`
+      `[nexrender-action-upload-s3-presigned] could not upload to s3 presigned url: ${url}, error: ${error}`
     );
     console.log(
-      `could not upload to s3 presigned url: ${url}, error: ${resp.status}`
+      `could not upload to s3 presigned url: ${url}, error: ${error}`
     );
   }
 };
