@@ -28,6 +28,7 @@ const PostToPresignedUrlWithFormData = async (
   contentTypeArg,
   callbackUrl,
   filePath,
+  jobuid,
   logger
 ) => {
   try {
@@ -45,7 +46,7 @@ const PostToPresignedUrlWithFormData = async (
       );
     }
     if (callbackUrl) {
-      await axios.post(callbackUrl, resp.data, {
+      await axios.post(callbackUrl, {data:resp.data, jobuid:jobuid}, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -76,6 +77,7 @@ const uploadToS3 = async (
   contentType,
   formdata,
   callBackUrl,
+  jobuid,
   logger
 ) => {
   if (!formdata) {
@@ -93,6 +95,7 @@ const uploadToS3 = async (
       { ...formData.getHeaders() },
       callBackUrl,
       filePath,
+      jobuid,
       logger
     );
   }
