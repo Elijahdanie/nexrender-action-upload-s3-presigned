@@ -41,7 +41,7 @@ If you want to make a post request to a custom url with form data you can add yo
                 "module": "nexrender-action-upload-s3-presigned",
                 "input": "output.mp4",
                 "params": {
-                    "url": "https:yourcustomurl.com/",
+                    "url": "https://yourcustomurl.com/",
                     "formdata":{
                         "id":"yourid",
                         "name":"some name"
