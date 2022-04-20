@@ -17,7 +17,7 @@ const putToPresignedUrl = async (url, buffer, contentTypeArg, logger) => {
     logger.log(
       `[nexrender-action-upload-s3-presigned] could not upload to s3 presigned url: ${url}, error: ${error.message}`
     );
-    throw error;
+    console.log(error);
   }
 };
 

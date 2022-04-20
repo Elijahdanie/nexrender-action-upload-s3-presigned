@@ -27,7 +27,7 @@ const run = async (job, settings, action, type) => {
     logger.log(
       `[nexrender-action-upload-s3-presigned] failed uploading to presigned-url: ${url} \n ${error?.message}`
     );
-    throw error;
+    console.log(error)
   }
 };
 
