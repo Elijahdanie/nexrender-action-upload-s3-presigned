@@ -49,15 +49,15 @@ const PostToPresignedUrlWithFormData = async (
           "Content-Type": "application/json",
         },
       });
-      if (resp.status === 200)
-      {
-        fs.unlink(filePath, (err) => {
-          if (err) {
-            console.log("file unlinking failed");
-            console.log(err);
-          }
-        });
-      }
+    }
+    if (resp.status === 200)
+    {
+      fs.unlink(filePath, (err) => {
+        if (err) {
+          console.log("file unlinking failed");
+          console.log(err);
+        }
+      });
     }
   } catch (error) {
     logger.log(
