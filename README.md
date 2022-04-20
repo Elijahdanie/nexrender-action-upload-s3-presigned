@@ -33,3 +33,22 @@ Upload to AWS S3 given a presignedUrl with `putObject` permissions
     }
 }
 ```
+If you want to make a post request to a custom url with form data you can add your form data in params example, you can also decide to include a callback url once file has been uploaded
+```
+"actions": {
+        "postrender": [
+            {
+                "module": "nexrender-action-upload-s3-presigned",
+                "input": "output.mp4",
+                "params": {
+                    "url": "https:yourcustomurl.com/",
+                    "formdata":{
+                        "id":"yourid",
+                        "name":"some name"
+                    },
+                    "callbackUrl":"https://yourcallbackurl.com"
+                }
+            }
+        ]
+    }
+```
