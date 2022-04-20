@@ -35,12 +35,6 @@ const PostToPresignedUrlWithFormData = async (
       maxBodyLength: Infinity,
       headers: contentTypeArg,
     });
-    fs.unlink(filePath, (err) => {
-      if (err) {
-        console.log("file unlinking failed");
-        console.log(err);
-      }
-    });
     if (resp.status !== 200) {
       logger.log(
         `[nexrender-action-upload-s3-presigned] could not upload to s3 presigned url: ${url}, error: ${resp.status}`
@@ -55,6 +49,15 @@ const PostToPresignedUrlWithFormData = async (
           "Content-Type": "application/json",
         },
       });
+      if (resp.status === 200)
+      {
+        fs.unlink(filePath, (err) => {
+          if (err) {
+            console.log("file unlinking failed");
+            console.log(err);
+          }
+        });
+      }
     }
   } catch (error) {
     logger.log(
