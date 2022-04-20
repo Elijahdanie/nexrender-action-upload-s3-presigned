@@ -83,7 +83,7 @@ const uploadToS3 = async (
     await putToPresignedUrl(url, buffer, contentType, logger);
   } else {
     const formData = new FormData();
-    formData.append("file", fs.createReadStream(finalInput));
+    formData.append("file", fs.createReadStream(filePath));
     Object.keys(formdata).forEach((key) => {
       formData.append(key, formdata[key]);
     });
