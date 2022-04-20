@@ -21,7 +21,7 @@ const putToPresignedUrl = async (url, buffer, contentTypeArg, logger) => {
   }
 };
 
-const putToPresignedUrlWithFormData = async (
+const PostToPresignedUrlWithFormData = async (
   url,
   buffer,
   contentTypeArg,
@@ -80,10 +80,10 @@ const uploadToS3 = async (
   } else {
     const formData = new FormData();
     formData.append("file", fs.createReadStream(finalInput));
-    Object.keys(formData).forEach((key) => {
+    Object.keys(formdata).forEach((key) => {
       formData.append(key, formdata[key]);
     });
-    await putToPresignedUrlWithFormData(
+    await PostToPresignedUrlWithFormData(
       url,
       formData,
       { ...formData.getHeaders() },
