@@ -1,5 +1,6 @@
 const fs = require("fs");
 const axios = require("axios");
+const FormData = require('form-data')
 
 const putToPresignedUrl = async (url, buffer, contentTypeArg, logger) => {
   try {
