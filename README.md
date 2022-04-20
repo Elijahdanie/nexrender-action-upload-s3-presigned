@@ -34,7 +34,7 @@ Upload to AWS S3 given a presignedUrl with `putObject` permissions
 }
 ```
 If you want to make a post request to a custom url with form data you can add your form data in params example, you can also decide to include a callback url once file has been uploaded
-```
+```json
 "actions": {
         "postrender": [
             {
