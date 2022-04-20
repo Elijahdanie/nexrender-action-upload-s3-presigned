@@ -10,8 +10,7 @@ const run = async (job, settings, action, type) => {
   const {logger} = settings;
   const {
     input,
-    params: { url, contentType, formdata},
-    callBackUrl
+    params: { url, contentType, formdata, callbackUrl },
   } = action;
   try {
     let finalInput = input ?? job.output;
@@ -22,7 +21,7 @@ const run = async (job, settings, action, type) => {
       `[nexrender-action-upload-s3-presigned] uploading to presigned-url: ${url}`
     );
 
-    await uploadToS3(url, finalInput, contentType, formdata, callBackUrl, logger);
+    await uploadToS3(url, finalInput, contentType, formdata, callbackUrl, logger);
   } catch (error) {
     logger.log(
       `[nexrender-action-upload-s3-presigned] failed uploading to presigned-url: ${url} \n ${error?.message}`
