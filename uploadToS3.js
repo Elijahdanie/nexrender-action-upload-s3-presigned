@@ -37,14 +37,6 @@ const PostToPresignedUrlWithFormData = async (
       maxBodyLength: Infinity,
       headers: contentTypeArg,
     });
-    if (resp.status !== 200) {
-      logger.log(
-        `[nexrender-action-upload-s3-presigned] could not upload to s3 presigned url: ${url}, error: ${resp.status}`
-      );
-      console.log(
-        `could not upload to s3 presigned url: ${url}, error: ${resp.status}`
-      );
-    }
     if (callbackUrl) {
       await axios.post(callbackUrl, {data:resp.data, jobuid:jobuid}, {
         headers: {
@@ -52,15 +44,12 @@ const PostToPresignedUrlWithFormData = async (
         },
       });
     }
-    if (resp.status === 200)
-    {
       fs.unlink(filePath, (err) => {
         if (err) {
           console.log("file unlinking failed");
           console.log(err);
         }
       });
-    }
   } catch (error) {
     logger.log(
       `[nexrender-action-upload-s3-presigned] could not upload to s3 presigned url: ${url}, error: ${error}`
